@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/menu :: nav"></div>
+
+<div class="main-container">
+  <div class="page-header">
+    <h1>Zonas de Pátio</h1>
+    <a th:href="@{/zonas-patio/novo}" class="btn btn-solid">Nova Zona</a>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome da Zona</th>
+        <th>Tipo da Zona</th>
+        <th>Capacidade</th>
+        <th>Pátio</th>
+        <th class="actions-column">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="z : ${zonasPatio}">
+        <td th:text="${z.id}"></td>
+        <td th:text="${z.nomeZona}"></td>
+        <td th:text="${z.tipoZona}"></td>
+        <td th:text="${z.capacidade}"></td>
+        <td th:text="${z.patio != null ? z.patio.nome : '---'}"></td>
+        <td>
+          <a th:href="@{'/zonas-patio/editar/' + ${z.id}}" class="btn btn-small btn-solid">Editar</a>
+          <a th:href="@{'/zonas-patio/excluir/' + ${z.id}}" class="btn btn-small btn-danger">Excluir</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/menu :: nav"></div>
+
+<div class="main-container">
+  <div class="page-header">
+    <h1>Pátios</h1>
+    <a th:href="@{/patios/novo}" class="btn btn-solid">Novo Pátio</a>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Área (m²)</th>
+        <th>Capacidade</th>
+        <th>Ativo</th>
+        <th>Filial</th>
+        <th class="actions-column">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="p : ${patios}">
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.nome}"></td>
+        <td th:text="${p.areaM2}"></td>
+        <td th:text="${p.capacidade}"></td>
+        <td th:text="${p.ativo}"></td>
+        <td th:text="${p.filial != null ? p.filial.nome : '---'}"></td>
+        <td>
+          <a th:href="@{'/patios/editar/' + ${p.id}}" class="btn btn-small btn-solid">Editar</a>
+          <a th:href="@{'/patios/excluir/' + ${p.id}}" class="btn btn-small btn-danger">Excluir</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

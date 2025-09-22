@@ -1,0 +1,194 @@
+/* ============================================================= */
+/* CSS EXCLUSIVO - HOME DASHBOARD (Dark Neon v2.5)               */
+/* ============================================================= */
+
+/* Container Principal */
+.main-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 20px;
+}
+/* Cabeçalho */
+.page-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 20px;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #00FF00;
+    color: #FFFFFF;
+    width: 100%;                 /* ocupa toda a largura disponível */
+    max-width: 500px;            /* limite para não ficar gigante */
+    height: 100px;               /* altura fixa estilo card */
+    display: flex;
+    justify-content: center;     /* centraliza horizontal */
+    align-items: center;         /* centraliza vertical */
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+
+/* Grid de Cards */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+/* Card */
+.card {
+    background-color: #00FF00; /* fundo neon */
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    text-decoration: none;
+    color: #FFFFFF; /* texto branco */
+    transition: all 0.3s ease;
+    box-shadow: 0 0 12px rgba(0, 255, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Título dentro do card */
+.card h2 {
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #FFFFFF; /* branco */
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+/* Texto dentro do card */
+.card p {
+    font-size: 0.95rem;
+    color: #f5f5f5; /* branco suave */
+}
+
+/* Hover Card (efeito inverso neon) */
+.card:hover {
+    background-color: #1a1a1a; /* volta para dark */
+    color: #00FF00; /* texto verde neon no hover */
+    border: 1px solid #00FF00;
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+}
+
+.card:hover h2,
+.card:hover p {
+    color: #00FF00; /* texto verde no hover */
+}
+
+/* ========================= */
+/*  🔥 Responsividade Global */
+/* ========================= */
+@media (max-width: 1024px) {
+    .main-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    /* Cabeçalhos e títulos */
+    .page-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .page-header h1 {
+        font-size: 1.6rem;
+        height: auto;
+        padding: 20px;
+    }
+
+    /* Navbar */
+    .neon-navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-links li a {
+        font-size: 0.85rem;
+        min-width: auto;
+        padding: 6px 10px;
+    }
+
+    /* Login & Signup */
+    .login-container,
+    .signup-container {
+        width: 90%;
+        margin: 40px auto;
+        padding: 20px;
+    }
+
+    /* Cards da home */
+    .card {
+        padding: 15px;
+    }
+
+    .card h2 {
+        font-size: 1rem;
+    }
+
+    .card p {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Texto menor em mobile */
+    body {
+        font-size: 0.9rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .nav-links {
+        gap: 6px;
+    }
+
+    .nav-links li a {
+        font-size: 0.8rem;
+        padding: 4px 6px;
+    }
+
+    .btn,
+    .btn-small {
+        width: 100%;
+        text-align: center;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

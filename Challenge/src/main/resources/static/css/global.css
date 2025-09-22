@@ -1,0 +1,265 @@
+/* ============================================================= */
+/* CSS TEMA DARK NEON v2.5 (Botões de Ação na Tabela)            */
+/* ============================================================= */
+
+/* --- Reset e Estilos Globais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #E0E0E0; /* Cinza claro para melhor legibilidade */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Container Principal da Página --- */
+.main-container {
+    width: 90%;
+    max-width: 1400px; /* Aumenta a largura máxima para tabelas */
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* --- Cabeçalho da Página (Título + Botão) --- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #222; /* Linha sutil para separar */
+    padding-bottom: 20px;
+}
+
+.page-header h1 {
+    font-size: 2.2rem;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* --- Estilos de Botão --- */
+.btn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 8px; /* Bordas um pouco menos arredondadas */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    border: none;
+}
+
+.btn-solid {
+    background-color: #00FF00;
+    color: #000000;
+}
+
+.btn-solid:hover {
+    background-color: #00aa00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 255, 0, 0.2);
+}
+
+/* ADICIONADO: Botão de Perigo (Excluir) */
+.btn-danger {
+    background-color: #FF4136; /* Vermelho */
+    color: #FFFFFF;
+}
+
+.btn-danger:hover {
+    background-color: #d12c23; /* Vermelho mais escuro */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 65, 54, 0.2);
+}
+
+/* ADICIONADO: Modificador de tamanho para botões menores */
+.btn-small {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+
+/* --- Wrapper da Tabela (para possível scroll horizontal) --- */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Adiciona scroll se a tela for pequena */
+}
+
+/* --- Estilo da Tabela de Dados --- */
+.data-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove espaço entre células */
+    font-size: 0.95rem;
+}
+
+/* Cabeçalho da Tabela */
+.data-table thead th {
+    background-color: #00FF00;
+    color: #FFFFFF;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px 12px;
+    text-align: left;
+}
+
+/* Corpo e Células da Tabela */
+.data-table tbody td {
+    padding: 12px; /* Padding um pouco menor para acomodar os botões */
+    border-bottom: 1px solid #222; /* Linhas sutis entre as linhas */
+    vertical-align: middle; /* Alinha o conteúdo da célula no meio */
+}
+
+/* Efeito Hover nas Linhas */
+.data-table tbody tr:hover {
+    background-color: #1a1a1a;
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none; /* Remove a borda da última linha */
+}
+
+/* Coluna de Ações */
+.actions-column {
+    text-align: right;
+}
+/* ALTERADO: Célula de ações para alinhar os botões */
+.data-table td:last-child {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px; /* Espaçamento entre os botões */
+}
+
+/* Links de Ação (Estilo antigo não mais usado para os botões) */
+.action-link {
+    color: #00FF00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* ... (O resto do CSS para formulários continua o mesmo) ... */
+.data-form { padding: 20px; background-color: #111; border: 1px solid #222; border-radius: 8px; }
+.form-group { margin-bottom: 25px; }
+.form-group label { display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 600; color: #aaa; text-transform: uppercase; }
+.data-form input[type="text"] { width: 100%; background-color: #000; border: 1px solid #333; color: #E0E0E0; padding: 14px; border-radius: 6px; font-size: 1rem; transition: all 0.2s ease-in-out; }
+.data-form input[type="text"]:focus { outline: none; border-color: #00FF00; box-shadow: 0 0 10px rgba(0, 255, 0, 0.2); }
+.form-row { display: flex; gap: 20px; }
+.form-row .form-group { flex: 1; }
+.flex-grow-2 { flex: 2; }
+.flex-grow-3 { flex: 3; }
+.form-actions { margin-top: 30px; padding-top: 20px; border-top: 1px solid #222; display: flex; align-items: center; gap: 20px; }
+.link-secondary { color: #aaa; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+.link-secondary:hover { color: #FFF; text-decoration: underline; }
+
+/* ========================= */
+/*  🔥 Responsividade Global */
+/* ========================= */
+@media (max-width: 1024px) {
+    .main-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    /* Cabeçalhos e títulos */
+    .page-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .page-header h1 {
+        font-size: 1.6rem;
+        height: auto;
+        padding: 20px;
+    }
+
+    /* Navbar */
+    .neon-navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-links li a {
+        font-size: 0.85rem;
+        min-width: auto;
+        padding: 6px 10px;
+    }
+
+    /* Login & Signup */
+    .login-container,
+    .signup-container {
+        width: 90%;
+        margin: 40px auto;
+        padding: 20px;
+    }
+
+    /* Cards da home */
+    .card {
+        padding: 15px;
+    }
+
+    .card h2 {
+        font-size: 1rem;
+    }
+
+    .card p {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Texto menor em mobile */
+    body {
+        font-size: 0.9rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .nav-links {
+        gap: 6px;
+    }
+
+    .nav-links li a {
+        font-size: 0.8rem;
+        padding: 4px 6px;
+    }
+
+    .btn,
+    .btn-small {
+        width: 100%;
+        text-align: center;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

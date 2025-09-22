@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/menu :: nav"></div>
+
+<div class="main-container">
+  <div class="page-header">
+    <h1>Status de Operações</h1>
+    <a th:href="@{/status-operacoes/novo}" class="btn btn-solid">Novo Status</a>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descrição</th>
+        <th>Tipo de Movimentação</th>
+        <th class="actions-column">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="s : ${statusOperacoes}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.descricao}"></td>
+        <td th:text="${s.tipoMovimentacao}"></td>
+        <td>
+          <a th:href="@{'/status-operacoes/editar/' + ${s.id}}" class="btn btn-small btn-solid">Editar</a>
+          <a th:href="@{'/status-operacoes/excluir/' + ${s.id}}" class="btn btn-small btn-danger">Excluir</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

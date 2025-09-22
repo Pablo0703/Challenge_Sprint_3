@@ -1,0 +1,185 @@
+.neon-navbar {
+    background-color: #00FF00;
+    padding: 7px 20px;
+    display: flex;
+    justify-content: space-between; /* links esquerda / centro / direita */
+    align-items: center;
+    box-shadow: 0 2px 12px rgba(0, 255, 0, 0.5);
+    position: relative;
+}
+
+/* Links agrupados */
+.nav-links {
+    display: flex;
+    gap: 10px;              /* espaço entre itens */
+    flex-wrap: nowrap;      /* 🔥 não deixa os itens caírem p/ baixo */
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* Links */
+.nav-links li {
+    list-style: none;
+}
+
+/* Links padrão */
+.nav-links li a {
+    font-size: 0.9rem;   /* 🔥 diminui um pouco o tamanho */
+    font-weight: 700;
+    padding: 4px 10px;   /* 🔥 menos espaço interno */
+    min-width: 70px;     /* 🔥 largura mínima menor */
+    text-align: center;
+
+    text-decoration: none;
+    color: #FFF;
+    text-shadow: 0 0 3px #000, 0 0 8px #00FF00;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Links compostos */
+.nav-links li a.break {
+    white-space: normal;
+    line-height: 1.2;    /* 🔥 linhas mais juntinhas */
+    max-width: 90px;     /* 🔥 reduz largura máxima */
+}
+
+
+/* Hover */
+.nav-links li a:hover {
+    background-color: #111;
+    color: #00FF00;
+    text-shadow: 0 0 4px #00FF00, 0 0 12px #00FF00, 0 0 18px #00FF00;
+}
+
+/* Logo */
+.brand {
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: 'Orbitron', sans-serif;
+    color: #FFF;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 12px #000, 0 0 20px #00FF00;
+    margin: 0 20px;
+}
+
+/* Logout especial */
+.nav-links li a.logout {
+    background-color: #FF4136;
+    color: #FFF;
+    border-radius: 6px;
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(255, 65, 54, 1);
+}
+
+.nav-links li a.logout:hover {
+    background-color: #d12c23;
+    box-shadow: 0 0 15px rgba(255, 65, 54, 1);
+}
+
+/* ========================= */
+/*  🔥 Responsividade Global */
+/* ========================= */
+@media (max-width: 1024px) {
+    .main-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    /* Cabeçalhos e títulos */
+    .page-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .page-header h1 {
+        font-size: 1.6rem;
+        height: auto;
+        padding: 20px;
+    }
+
+    /* Navbar */
+    .neon-navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-links li a {
+        font-size: 0.85rem;
+        min-width: auto;
+        padding: 6px 10px;
+    }
+
+    /* Login & Signup */
+    .login-container,
+    .signup-container {
+        width: 90%;
+        margin: 40px auto;
+        padding: 20px;
+    }
+
+    /* Cards da home */
+    .card {
+        padding: 15px;
+    }
+
+    .card h2 {
+        font-size: 1rem;
+    }
+
+    .card p {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Texto menor em mobile */
+    body {
+        font-size: 0.9rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .nav-links {
+        gap: 6px;
+    }
+
+    .nav-links li a {
+        font-size: 0.8rem;
+        padding: 4px 6px;
+    }
+
+    .btn,
+    .btn-small {
+        width: 100%;
+        text-align: center;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

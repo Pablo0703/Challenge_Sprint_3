@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/menu :: nav"></div>
+
+<div class="main-container">
+    <div class="page-header">
+        <h1 th:text="${historico.id == null ? 'Novo Histórico de Localização' : 'Editar Histórico de Localização'}"></h1>
+    </div>
+
+    <form th:action="@{/historicos/salvar}" th:object="${historico}" method="post" class="data-form">
+        <input type="hidden" th:field="*{id}" />
+
+        <!-- Selecione Moto e Motociclista -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="motoId">Moto</label>
+                <select id="motoId" th:field="*{motoId}">
+                    <option th:each="m : ${motos}"
+                            th:value="${m.id}"
+                            th:text="${m.modelo + ' - ' + m.placa}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="motociclistaId">Motociclista</label>
+                <select id="motociclistaId" th:field="*{motociclistaId}">
+                    <option value="">-- Nenhum --</option>
+                    <option th:each="mot : ${motociclistas}"
+                            th:value="${mot.id}"
+                            th:text="${mot.nome}">
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Selecione Zona Pátio e Status Operação -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="zonaPatioId">Zona Pátio</label>
+                <select id="zonaPatioId" th:field="*{zonaPatioId}">
+                    <option value="">-- Nenhuma --</option>
+                    <option th:each="z : ${zonas}"
+                            th:value="${z.id}"
+                            th:text="${z.nomeZona}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="statusOperacaoId">Status Operação</label>
+                <select id="statusOperacaoId" th:field="*{statusOperacaoId}">
+                    <option value="">-- Nenhum --</option>
+                    <option th:each="s : ${statusOperacoes}"
+                            th:value="${s.id}"
+                            th:text="${s.descricao}">
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Datas -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="dataHoraSaida">Data/Hora Saída</label>
+                <input type="datetime-local" id="dataHoraSaida"
+                       th:field="*{dataHoraSaida}" required />
+            </div>
+            <div class="form-group">
+                <label for="dataHoraEntrada">Data/Hora Entrada</label>
+                <input type="datetime-local" id="dataHoraEntrada"
+                       th:field="*{dataHoraEntrada}" />
+            </div>
+        </div>
+
+        <!-- Km Rodados -->
+        <div class="form-group">
+            <label for="kmRodados">Km Rodados</label>
+            <input type="number" step="0.01" id="kmRodados" th:field="*{kmRodados}" />
+        </div>
+
+        <!-- Ações -->
+        <div class="form-actions">
+            <button type="submit" class="btn btn-solid">Salvar</button>
+            <a th:href="@{/historicos}" class="link-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

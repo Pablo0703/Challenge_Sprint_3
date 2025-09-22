@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/menu :: nav"></div>
+
+<div class="main-container">
+  <div class="page-header">
+    <h1>Motos</h1>
+    <a th:href="@{/motos/novo}" class="btn btn-solid">Nova Moto</a>
+  </div>
+
+<!--  <div class="table-wrapper">-->
+    <table class="data-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Placa</th>
+        <th>Modelo</th>
+        <th>Ano Fab.</th>
+        <th>Ano Mod.</th>
+        <th>Chassi</th>
+        <th>Cilindrada</th>
+        <th>Cor</th>
+        <th>Tipo</th>
+        <th>Status</th>
+        <th>Data Aquisição</th>
+        <th>Valor</th>
+        <th>Nota Fiscal</th>
+        <th class="actions-column">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="m : ${motos}">
+        <td th:text="${m.id}"></td>
+        <td th:text="${m.placa}"></td>
+        <td th:text="${m.modelo}"></td>
+        <td th:text="${m.anoFabricacao}"></td>
+        <td th:text="${m.anoModelo}"></td>
+        <td th:text="${m.chassi}"></td>
+        <td th:text="${m.cilindrada}"></td>
+        <td th:text="${m.cor}"></td>
+        <td th:text="${m.tipo}"></td>
+        <td th:text="${m.status}"></td>
+        <td th:text="${#temporals.format(m.dataAquisicao, 'dd/MM/yyyy')}"></td>
+        <td th:text="${m.valorAquisicao}"></td>
+        <td th:text="${m.notaFiscalId}"></td>
+        <td>
+          <a th:href="@{'/motos/editar/' + ${m.id}}" class="btn btn-small btn-solid">Editar</a>
+          <a th:href="@{'/motos/excluir/' + ${m.id}}" class="btn btn-small btn-danger">Excluir</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+<!--</div>-->
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

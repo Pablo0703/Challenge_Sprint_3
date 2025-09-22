@@ -1,0 +1,3 @@
+-- Agora que os registros existentes já têm valores, podemos aplicar NOT NULL
+ALTER TABLE MOTTU_USERS MODIFY (NAME VARCHAR2(150) NOT NULL);
+ALTER TABLE MOTTU_USERS MODIFY (EMAIL VARCHAR2(150) NOT NULL);

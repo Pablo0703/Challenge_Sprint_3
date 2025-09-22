@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/menu :: nav"></div>
+
+<div class="main-container">
+  <div class="page-header">
+    <h1>Localizações de Motos</h1>
+    <a th:href="@{/localizacoes-moto/novo}" class="btn btn-solid">Nova Localização</a>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Moto</th>
+        <th>Zona Pátio</th>
+        <th>Entrada</th>
+        <th>Saída</th>
+        <th class="actions-column">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="loc : ${localizacoes}">
+        <td th:text="${loc.id}"></td>
+        <td th:text="${loc.moto != null ? loc.moto.placa : '---'}"></td>
+        <td th:text="${loc.zonaPatio != null ? loc.zonaPatio.nomeZona : '---'}"></td>
+        <td th:text="${#dates.format(loc.dataHoraEntrada, 'dd/MM/yyyy HH:mm')}"></td>
+        <td th:text="${loc.dataHoraSaida != null ? #dates.format(loc.dataHoraSaida, 'dd/MM/yyyy HH:mm') : '---'}"></td>
+        <td>
+          <a th:href="@{'/localizacoes-moto/editar/' + ${loc.id}}" class="btn btn-small btn-solid">Editar</a>
+          <a th:href="@{'/localizacoes-moto/excluir/' + ${loc.id}}" class="btn btn-small btn-danger">Excluir</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

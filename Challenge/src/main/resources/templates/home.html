@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <!-- CSS global -->
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+    <!-- CSS exclusivo para o Home -->
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <!-- CSS exclusivo para o menu -->
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+</head>
+<body>
+
+<!-- Menu -->
+<div th:replace="fragments/menu :: nav"></div>
+
+<!-- Conteúdo principal -->
+<div class="main-container">
+    <div class="page-header">
+        <h1>Dashboard</h1>
+    </div>
+
+    <div class="grid">
+        <a th:href="@{/enderecos}" class="card">
+            <h2>Endereços</h2>
+            <p>Gerencie os endereços cadastrados</p>
+        </a>
+
+        <a th:href="@{/filiais}" class="card">
+            <h2>Filiais</h2>
+            <p>Gerencie as filiais da empresa</p>
+        </a>
+
+        <a th:href="@{/patios}" class="card">
+            <h2>Pátios</h2>
+            <p>Controle a infraestrutura</p>
+        </a>
+
+        <a th:href="@{/zonas-patio}" class="card">
+            <h2>Zonas de Pátio</h2>
+            <p>Gerencie as zonas dos pátios</p>
+        </a>
+
+        <a th:href="@{/motociclistas}" class="card">
+            <h2>Motociclistas</h2>
+            <p>Gerencie os motociclistas cadastrados</p>
+        </a>
+
+        <a th:href="@{/motos}" class="card">
+            <h2>Motos</h2>
+            <p>Gerencie a frota de motos</p>
+        </a>
+
+        <a th:href="@{/localizacoes-moto}" class="card">
+            <h2>Localização da Moto</h2>
+            <p>Histórico de movimentação</p>
+        </a>
+
+        <a th:href="@{/historicos}" class="card">
+            <h2>Histórico de Localização</h2>
+            <p>Saídas, entradas e transferências</p>
+        </a>
+
+        <a th:href="@{/notas-fiscais}" class="card">
+            <h2>Notas Fiscais</h2>
+            <p>Gerencie as notas de aquisição</p>
+        </a>
+
+        <a th:href="@{/tipos-moto}" class="card">
+            <h2>Tipos de Moto</h2>
+            <p>Classificação da frota</p>
+        </a>
+
+        <a th:href="@{/status-motos}" class="card">
+            <h2>Status da Moto</h2>
+            <p>Disponibilidade e manutenção</p>
+        </a>
+
+        <a th:href="@{/status-operacoes}" class="card">
+            <h2>Status de Operação</h2>
+            <p>Controle das movimentações</p>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

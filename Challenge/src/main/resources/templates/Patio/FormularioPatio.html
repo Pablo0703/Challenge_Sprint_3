@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/menu :: nav"></div>
+
+<div class="main-container">
+    <div class="page-header">
+        <h1 th:text="${patio.id == null ? 'Cadastrar Pátio' : 'Editar Pátio'}"></h1>
+    </div>
+
+    <form th:action="@{/patios/salvar}" th:object="${patio}" method="post" class="data-form">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" th:field="*{nome}" required maxlength="50" />
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="areaM2">Área (m²)</label>
+                <input type="number" step="0.01" id="areaM2" th:field="*{areaM2}" />
+            </div>
+            <div class="form-group">
+                <label for="capacidade">Capacidade</label>
+                <input type="number" id="capacidade" th:field="*{capacidade}" required />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="ativo">Ativo</label>
+                <select id="ativo" th:field="*{ativo}">
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                </select>
+            </div>
+            <div class="form-group flex-grow-2">
+                <label for="idFilial">Filial</label>
+                <select id="idFilial" th:field="*{idFilial}">
+                    <option th:each="f : ${filiais}" th:value="${f.id}" th:text="${f.nome}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-solid">Salvar</button>
+            <a th:href="@{/patios}" class="link-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

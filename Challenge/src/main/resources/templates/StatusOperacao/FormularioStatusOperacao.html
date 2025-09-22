@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/menu :: nav"></div>
+
+<div class="main-container">
+    <div class="page-header">
+        <h1 th:text="${statusOperacao.id == null ? 'Cadastrar Status de Operação' : 'Editar Status de Operação'}"></h1>
+    </div>
+
+    <form th:action="@{/status-operacoes/salvar}" th:object="${statusOperacao}" method="post" class="data-form">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <input type="text" id="descricao" th:field="*{descricao}" required maxlength="50" />
+        </div>
+
+        <div class="form-group">
+            <label for="tipoMovimentacao">Tipo de Movimentação</label>
+            <select id="tipoMovimentacao" th:field="*{tipoMovimentacao}">
+                <option value="ENTRADA">Entrada</option>
+                <option value="SAIDA">Saída</option>
+                <option value="TRANSFERENCIA">Transferência</option>
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-solid">Salvar</button>
+            <a th:href="@{/status-operacoes}" class="link-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

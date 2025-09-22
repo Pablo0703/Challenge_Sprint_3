@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/menu :: nav"></div>
+
+<div class="main-container">
+  <div class="page-header">
+    <h1>Motociclistas</h1>
+    <a th:href="@{/motociclistas/novo}" class="btn btn-solid">Novo Motociclista</a>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>CNH</th>
+        <th>Validade CNH</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th>Data Cadastro</th>
+        <th>Ativo</th>
+        <th>Endereço</th>
+        <th class="actions-column">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="m : ${motociclistas}">
+        <td th:text="${m.id}"></td>
+        <td th:text="${m.nome}"></td>
+        <td th:text="${m.cpf}"></td>
+        <td th:text="${m.cnh}"></td>
+        <td th:text="${#temporals.format(m.dataValidadeCnh, 'dd/MM/yyyy')}"></td>
+        <td th:text="${m.telefone}"></td>
+        <td th:text="${m.email}"></td>
+        <td th:text="${#temporals.format(m.dataCadastro, 'dd/MM/yyyy')}"></td>
+        <td th:text="${m.ativo}"></td>
+        <td th:text="${m.enderecoId}"></td>
+        <td>
+          <a th:href="@{'/motociclistas/editar/' + ${m.id}}" class="btn btn-small btn-solid">Editar</a>
+          <a th:href="@{'/motociclistas/excluir/' + ${m.id}}" class="btn btn-small btn-danger">Excluir</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

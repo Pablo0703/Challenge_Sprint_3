@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/menu :: nav"></div>
+
+<div class="main-container">
+  <div class="page-header">
+    <h1>Tipos de Moto</h1>
+    <a th:href="@{/tipos-moto/novo}" class="btn btn-solid">Novo Tipo</a>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descrição</th>
+        <th>Categoria</th>
+        <th class="actions-column">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="t : ${tiposMoto}">
+        <td th:text="${t.id}"></td>
+        <td th:text="${t.descricao}"></td>
+        <td th:text="${t.categoria}"></td>
+        <td>
+          <a th:href="@{'/tipos-moto/editar/' + ${t.id}}" class="btn btn-small btn-solid">Editar</a>
+          <a th:href="@{'/tipos-moto/excluir/' + ${t.id}}" class="btn btn-small btn-danger">Excluir</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

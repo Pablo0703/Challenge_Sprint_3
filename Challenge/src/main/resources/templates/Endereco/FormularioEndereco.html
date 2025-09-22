@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/menu :: nav"></div>
+
+<div class="main-container">
+  <div class="page-header">
+    <h1 th:text="${endereco.id == null ? 'Cadastrar Endereço' : 'Editar Endereço'}"></h1>
+  </div>
+
+  <form th:action="@{/enderecos/salvar}" th:object="${endereco}" method="post" class="data-form">
+    <input type="hidden" th:field="*{id}" />
+
+    <div class="form-row">
+      <div class="form-group flex-grow-3">
+        <label for="logradouro">Logradouro</label>
+        <input type="text" id="logradouro" th:field="*{logradouro}" required />
+      </div>
+      <div class="form-group">
+        <label for="numero">Número</label>
+        <input type="text" id="numero" th:field="*{numero}" required />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group flex-grow-2">
+        <label for="complemento">Complemento</label>
+        <input type="text" id="complemento" th:field="*{complemento}" />
+      </div>
+      <div class="form-group flex-grow-2">
+        <label for="bairro">Bairro</label>
+        <input type="text" id="bairro" th:field="*{bairro}" required />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="cep">CEP</label>
+        <input type="text" id="cep" th:field="*{cep}" required />
+      </div>
+      <div class="form-group">
+        <label for="cidade">Cidade</label>
+        <input type="text" id="cidade" th:field="*{cidade}" required />
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado</label>
+        <input type="text" id="estado" th:field="*{estado}" maxlength="2" required />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="pais">País</label>
+        <input type="text" id="pais" th:field="*{pais}" />
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-solid">Salvar</button>
+      <a th:href="@{/enderecos}" class="link-secondary">Cancelar</a>
+    </div>
+  </form>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

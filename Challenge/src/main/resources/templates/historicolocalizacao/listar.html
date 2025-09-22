@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/menu :: nav"></div>
+
+<div class="main-container">
+  <div class="page-header">
+    <h1>Histórico de Localizações</h1>
+    <a th:href="@{/historicos/novo}" class="btn btn-solid">Novo Registro</a>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Moto</th>
+        <th>Motociclista</th>
+        <th>Zona Pátio</th>
+        <th>Saída</th>
+        <th>Entrada</th>
+        <th>Km Rodados</th>
+        <th>Status Operação</th>
+        <th class="actions-column">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="h : ${historicos}">
+        <td th:text="${h.id}"></td>
+        <td th:text="${h.moto != null ? h.moto.placa : '---'}"></td>
+        <td th:text="${h.motociclista != null ? h.motociclista.nome : '---'}"></td>
+        <td th:text="${h.zonaPatio != null ? h.zonaPatio.nomeZona : '---'}"></td>
+        <td th:text="${#temporals.format(h.dataHoraSaida, 'dd/MM/yyyy HH:mm')}"></td>
+        <td th:text="${h.dataHoraEntrada != null ? #temporals.format(h.dataHoraEntrada, 'dd/MM/yyyy HH:mm') : '---'}"></td>
+        <td th:text="${h.kmRodados}"></td>
+        <td th:text="${h.statusOperacao != null ? h.statusOperacao.descricao : '---'}"></td>
+        <td>
+          <a th:href="@{'/historicos/editar/' + ${h.id}}" class="btn btn-small btn-solid">Editar</a>
+          <a th:href="@{'/historicos/excluir/' + ${h.id}}" class="btn btn-small btn-danger">Excluir</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

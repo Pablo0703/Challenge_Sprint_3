@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/menu :: nav"></div>
+
+<div class="main-container">
+    <div class="page-header">
+        <h1 th:text="${zonaPatio.id == null ? 'Cadastrar Zona de Pátio' : 'Editar Zona de Pátio'}"></h1>
+    </div>
+
+    <form th:action="@{/zonas-patio/salvar}" th:object="${zonaPatio}" method="post" class="data-form">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label for="nomeZona">Nome da Zona</label>
+            <input type="text" id="nomeZona" th:field="*{nomeZona}" required maxlength="30" />
+        </div>
+
+        <div class="form-group">
+            <label for="tipoZona">Tipo da Zona</label>
+            <input type="text" id="tipoZona" th:field="*{tipoZona}" required maxlength="20" />
+        </div>
+
+        <div class="form-group">
+            <label for="capacidade">Capacidade</label>
+            <input type="number" id="capacidade" th:field="*{capacidade}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="idPatio">Pátio</label>
+            <select id="idPatio" th:field="*{idPatio}">
+                <option th:each="p : ${patios}" th:value="${p.id}" th:text="${p.nome}"></option>
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-solid">Salvar</button>
+            <a th:href="@{/zonas-patio}" class="link-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
