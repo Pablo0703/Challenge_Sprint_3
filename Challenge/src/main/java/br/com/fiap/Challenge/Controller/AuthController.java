@@ -1,5 +1,6 @@
 package br.com.fiap.Challenge.Controller;
 
+import br.com.fiap.Challenge.DTO.RegisterRequestDTO;
 import br.com.fiap.Challenge.Entity.UsuarioEntity;
 import br.com.fiap.Challenge.Repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,27 +17,33 @@ public class AuthController {
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
 
-    // 👉 Página de login
     @GetMapping("/login")
     public String login() {
-        return "login"; // templates/login.html
+        return "login";
     }
 
-    // 👉 Página de cadastro
     @GetMapping("/signup")
     public String signupForm(Model model) {
-        model.addAttribute("usuario", new UsuarioEntity());
-        return "signup"; // templates/signup.html
+        model.addAttribute("registerRequest", new RegisterRequestDTO());
+        return "signup";
     }
 
-    // 👉 Registro de usuário
     @PostMapping("/signup")
-    public String register(@ModelAttribute UsuarioEntity usuario) {
-        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+    public String register(@ModelAttribute RegisterRequestDTO registerRequest, Model model) {
+        if (!registerRequest.getPassword().equals(registerRequest.getConfirmPassword())) {
+            model.addAttribute("error", "As senhas não coincidem!");
+            return "signup";
+        }
+
+        UsuarioEntity usuario = new UsuarioEntity();
+        usuario.setName(registerRequest.getName());
+        usuario.setUsername(registerRequest.getUsername());
+        usuario.setEmail(registerRequest.getEmail());
+        usuario.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         usuario.setEnabled(true);
+
         usuarioRepository.save(usuario);
 
-        // ✅ Depois de cadastrar, redireciona para login
         return "redirect:/auth/login";
     }
 }
