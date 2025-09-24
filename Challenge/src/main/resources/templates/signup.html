@@ -7,6 +7,7 @@
 </head>
 <body>
 <section class="signup-container">
+    <!-- Ajustado: agora o form usa o objeto 'usuario' vindo do controller -->
     <form class="signup-form" th:action="@{/auth/signup}" th:object="${registerRequest}" method="post">
         <h1>Cadastre-se</h1>
 
@@ -39,10 +40,15 @@
             <button type="submit" class="btn">Cadastrar</button>
         </div>
 
+        <div th:if="${error}" style="color:red;">
+            <p th:text="${error}"></p>
+        </div>
+
         <div class="link">
             <p>Já tem conta? <a th:href="@{/auth/login}">Login</a></p>
         </div>
     </form>
+
 </section>
 </body>
 </html>
