@@ -1,5 +1,5 @@
 # Use uma imagem base do Ubuntu para construção
-FROM ubuntu:latest AS build
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 
 # Atualize o repositório e instale o JDK e Maven
 RUN apt-get update && apt-get install openjdk-21-jdk maven -y
