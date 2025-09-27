@@ -40,8 +40,8 @@
         </div>
 
         <div class="form-group">
-            <label for="endereco">Endereço</label>
-            <select id="endereco" th:field="*{endereco.id}">
+            <label for="idEndereco">Endereço</label>
+            <select id="idEndereco" th:field="*{idEndereco}">
                 <option th:each="endereco : ${enderecos}"
                         th:value="${endereco.id}"
                         th:text="${endereco.logradouro + ', ' + endereco.numero}">

@@ -13,6 +13,8 @@ import java.util.Date;
 public class LocalizacaoMotoEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "localizacao_seq")
+    @SequenceGenerator(name = "localizacao_seq", sequenceName = "SEQ_LOCALIZACAO", allocationSize = 1)
     @Column(name = "ID_LOCALIZACAO")
     private Long id;
 
